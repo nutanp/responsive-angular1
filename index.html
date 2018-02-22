@@ -1,0 +1,49 @@
+<!doctype html>
+<html ng-app="testApp">
+  <head>
+      <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="main.js"></script>
+    <style>
+       .selected{
+           padding:10px;
+           background-color:#e0d318;
+       }
+       
+    </style>
+  </head>
+  <body>
+    <div ng-controller="ListController as listCtrl">
+          <div class="row" >
+             <div class="col-lg-3 col-md-3" >
+                    <ul class="list-group" >
+                        <li  class="list-group-item" ng-click="listCtrl.menuClicked(menu)"  ng-repeat="menu in listCtrl.list"  >
+                            <div class="row"  ng-class="{'selected': menu.active}" >
+                                <div class="col-md-10 col-lg-10 col-xs-8 col-sm-8 " >
+                                        {{menu.menuName}} 
+                                </div>
+                                <div class="col-md-2 text-center" >
+                                    <i class="glyphicon glyphicon-chevron-right hidden-sm hidden-xs "></i>
+                                    <i class="glyphicon glyphicon-minus-sign hidden-lg hidden-md"  ng-class="{'hidden': !menu.active  }"  ></i>
+                                    <i class="glyphicon glyphicon-plus-sign hidden-lg hidden-md" ng-class="{'hidden': menu.active  }"  ></i>
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div class="col-sm-12 col-xs-12 hidden-lg hidden-md" ng-class="{'hidden': !menu.active  }" >
+                                        {{menu.description}} 
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+             </div>
+             <div class="col-lg-8 col-md-8 hidden-xs hidden-sm"  >
+                <div class="jumbotron ">
+                      {{listCtrl.activeMenu.description}}  
+                </div> 
+             </div>
+          </div>
+           
+    </div>
+  </body>
+</html>
